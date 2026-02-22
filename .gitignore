@@ -1,0 +1,37 @@
+.env
+
+secrets/*
+secrets
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Model weights & checkpoints (large files)
+*.pth
+*.bin
+*.safetensors
+outputs/checkpoints/
+outputs/predictions/
+
+# HuggingFace cache
+.cache/
+
+# Dataset — keep processed splits, exclude raw if large
+data/raw/*
+
+# W&B
+wandb/
+
+.ipynb_checkpoints
+.DS_Store
+logs/*
+agent/models/*
+.txt
