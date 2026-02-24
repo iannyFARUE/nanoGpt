@@ -10,3 +10,8 @@ def  get_verdict():
         urllib.request.urlretrieve(url, file_path)
     else:
         print("The verdict file already exists. No need to download.")
+
+def load_verdict():
+    with open("data/the-verdict.txt", "r") as f:
+        content = f.read()
+    return content
