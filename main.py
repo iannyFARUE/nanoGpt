@@ -1,14 +1,24 @@
 from utils.data_loader import get_verdict
-from research.tokenizer import edith_warton_vocabulary
+from research.tokenizer import edith_warton_vocabulary, SimpleTokenizerV1
 
 def main():
-    print("Booting up the application...")
-    vocabulary = edith_warton_vocabulary()
-    for idx, item in enumerate(vocabulary.items()):
-        if idx > 20:
-            break
-        print(item)
+    vocab = edith_warton_vocabulary()
+    s_tokenizer = SimpleTokenizerV1(vocab)
+    text = """"It's the last he painted, you know,"
+            Mrs. Gisburn said with pardonable pride."""
+    ids = s_tokenizer.encode(text)
+    print(ids)
+    print(s_tokenizer.decode(ids))
+
+def main1():
+    vocab = edith_warton_vocabulary()
+    tokenizer = SimpleTokenizerV1(vocab)
+    text ="Hello, do you like monster energy"
+    print(tokenizer.encode(text))
 
 
 if __name__ == "__main__":
-    main()
+    vocab = edith_warton_vocabulary()
+    print(list(vocab.items())[-5:])
+    print(len(vocab))
+    # main1()

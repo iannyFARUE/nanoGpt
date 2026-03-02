@@ -26,7 +26,9 @@ def edith_warton_tokenizer():
 
     content = load_verdict()
     processed = tokenizerV4(content)
-    return sorted(set(processed))
+    all_tokens =  sorted(set(processed))
+    all_tokens.extend(["<|endoftext|>","<|unk|>"])
+    return all_tokens
 
 def edith_warton_vocabulary():
     all_tokens = edith_warton_tokenizer()
@@ -43,6 +45,7 @@ class SimpleTokenizerV1:
         preprocessed = [
         item.strip() for item in preprocessed if item.strip()
         ]
+        preprocessed = [item if item in self.str_to_int else "<|unk|>" for item in preprocessed]
         ids = [self.str_to_int[s] for s in preprocessed]
         return ids
     
@@ -50,10 +53,7 @@ class SimpleTokenizerV1:
         text = " ".join([self.int_to_str[i] for i in ids])
         text = re.sub(r'\s+([,.?!"()\'])', r'\1', text)
         return text
-    
-    
-if __name__ == "__main__":
-    tokenizerV4()
+
 
 
 
